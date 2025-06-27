@@ -8,6 +8,9 @@ class UsersController < ApplicationController
   def create
     user = User.create(
       name: params[:name],
+      email: params[:email],
+      password: params[:password],
+      password_confirmation: params[:password_confirmation],
     )
     render :show
   end
@@ -21,6 +24,9 @@ class UsersController < ApplicationController
     user = User.find_by(id: params[:id])
     user.update(
       name: params[:name] || user.name,
+      email: params[:email] || user.email,
+      password: params[:password] || user.password,
+      password_confirmation: params[:password_confirmation] || user.password_confirmation
     )
     render :show
   end
